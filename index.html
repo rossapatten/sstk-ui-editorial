@@ -1,2 +1,41 @@
 
-hello
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="https://api-cdn.shutterstock.com/2.0.6/static/css/sstk-widget.css">
+  </head>
+  <body>
+    <div id="widget-container"></div>
+    <script>
+      window.onload = () => {
+        const searchPage = {
+          name: 'searchPage',
+          component: ShutterstockWidget.components.SearchPage,
+          props: {
+            mediaType: 'editorial',
+            title: 'Shutterstock UI Search Widget',
+            subtitle: '',
+            dynamicTitle: true,
+            dynamicSubtitle: true,
+            showMore: true,
+            showSearchBar: true,
+            editorialCountry: "USA",
+            onItemClick: (e, item) => {
+              e.preventDefault();
+              console.log(item);
+            },
+          }
+        };
+
+
+        const widget = new ShutterstockWidget({
+          container: document.getElementById('widget-container'),
+          key: 'LKNNY6Itbd9FfXpo1yXY4auOTlVBrRzz',
+          pages: [searchPage]
+        });
+
+        widget.getPage('searchPage').search()
+      }
+    </script>
+    <script src="https://api-cdn.shutterstock.com/2.0.6/static/js/sstk-widget.js"></script>
+  </body>
+</html>
