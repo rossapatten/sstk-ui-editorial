@@ -11,25 +11,61 @@
           name: 'searchPage',
           component: ShutterstockWidget.components.SearchPage,
           props: {
-            mediaType: 'editorial',
+            mediaType: 'images',
             title: 'Shutterstock UI Search Widget',
             subtitle: '',
             dynamicTitle: true,
             dynamicSubtitle: true,
             showMore: true,
             showSearchBar: true,
+            showItemId: true,
             editorialCountry: "USA",
-            onItemClick: (e, item) => {
-              e.preventDefault();
-              console.log(item);
+            searchFilters: {
+              showFilterDrawer: true,
+              images: {
+                imageTypeFilter: [
+                  {
+                    label: 'Red Carpet',
+                    assetType: 'editorial',
+                    params: {
+                      query: "Red Carpet",
+                    },
+                  },
+                ],
+              },
+              
+              searchBarDropdownFilters: [
+              {
+                label: 'Creative RF',
+                assetType: 'images',
+              },
+              {
+                label: 'Editorial RM',
+                assetType: 'editorial',
+              },
+              {
+                label: 'Headshot',
+                assetType: 'editorial',
+                params: {
+                  category: "Headshot",
+                  query: "premiere",
+                  sort: "newest",
+                  supplier_code: "EPA"
+                },
+              },
+            ],
             },
-          }
+          },
+          
         };
+
+        
 
 
         const widget = new ShutterstockWidget({
           container: document.getElementById('widget-container'),
           key: 'N9ORgu3BIU0sUfhoW98tobYh7t93eTmb',
+          themeMode: 'dark',
           pages: [searchPage]
         });
 
