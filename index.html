@@ -7,6 +7,7 @@
     <div id="widget-container"></div>
     <script>
       window.onload = () => {
+        const categories = ["Music","Headshot"]
         const searchPage = {
           name: 'searchPage',
           component: ShutterstockWidget.components.SearchPage,
@@ -25,15 +26,21 @@
               images: {
                 imageTypeFilter: [
                   {
-                    label: 'Red Carpet',
-                    assetType: 'editorial',
+                    label: 'Editorial Use',
+                    assetType: 'images',
                     params: {
-                      query: "Red Carpet",
+                      is_editorial: true,
                     },
                   },
+                  {
+                    label: 'Non Editorial Use',
+                    assetType: 'images',
+                    params: {
+                      is_editorial: true,
+                    },
+                  }
                 ],
               },
-              
               searchBarDropdownFilters: [
               {
                 label: 'Creative RF',
@@ -42,17 +49,8 @@
               {
                 label: 'Editorial RM',
                 assetType: 'editorial',
-              },
-              {
-                label: 'Headshot',
-                assetType: 'editorial',
-                params: {
-                  category: "Headshot",
-                  query: "premiere",
-                  sort: "newest",
-                  supplier_code: "EPA"
-                },
-              },
+                sort: 'newest'
+              }
             ],
             },
           },
